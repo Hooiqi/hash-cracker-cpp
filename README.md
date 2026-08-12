@@ -1,4 +1,4 @@
-Hash Cracker CLI Tool
+## Hash Cracker CLI Tool
 
 A multi-threaded command-line password hash cracker written in C++23. Supports MD5, SHA1, SHA256, and SHA512 hash recovery through dictionary attacks, brute-force keyspace search, and rule-based word mutations (leetspeak, capitalization, digit suffixes, reversal).
 
