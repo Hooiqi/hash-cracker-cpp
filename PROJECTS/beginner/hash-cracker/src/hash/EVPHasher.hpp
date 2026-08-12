@@ -65,6 +65,12 @@ struct SHA512Tag {
     static constexpr std::size_t hex_length = 128;
 };
 
+struct SHA3_256Tag {
+    static const EVP_MD *algorithm() { return EVP_sha3_256(); }
+    static constexpr std::string_view name = "SHA3-256";
+    static constexpr std::size_t hex_length = 64;
+};
+
 } // namespace evp
 
 inline constexpr std::array<std::array<char, 2>, 256> HEX_TABLE = [] {
@@ -108,3 +114,4 @@ using MD5Hasher = EVPHasher<evp::MD5Tag>;
 using SHA1Hasher = EVPHasher<evp::SHA1Tag>;
 using SHA256Hasher = EVPHasher<evp::SHA256Tag>;
 using SHA512Hasher = EVPHasher<evp::SHA512Tag>;
+using SHA3_256Hasher = EVPHasher<evp::SHA3_256Tag>;
