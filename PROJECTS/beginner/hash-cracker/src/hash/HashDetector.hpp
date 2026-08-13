@@ -16,7 +16,7 @@ Connects to:
 #include <expected>
 #include <string_view>
 
-enum class HashType { MD5, SHA1, SHA256, SHA512 };
+enum class HashType { MD5, SHA1, SHA256, SHA512, SHA3_256 };
 
 class HashDetector {
   public:
