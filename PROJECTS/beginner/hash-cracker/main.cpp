@@ -40,6 +40,7 @@ Connects to:
 #include "src/hash/SHA1Hasher.hpp"
 #include "src/hash/SHA256Hasher.hpp"
 #include "src/hash/SHA512Hasher.hpp"
+#include "src/hash/SHA3_256Hasher.hpp"
 #include <boost/program_options.hpp>
 #include <expected>
 #include <iostream>
@@ -96,6 +97,8 @@ static auto dispatch_hasher(HashType type, const CrackConfig &cfg)
             return dispatch_attack<SHA256Hasher>(cfg);
         case HashType::SHA512:
             return dispatch_attack<SHA512Hasher>(cfg);
+        case HashType::SHA3_256:
+            return dispatch_attack<SHA3_256Hasher>(cfg);
     }
     return std::unexpected(CrackError::UnsupportedAlgorithm);
 }
@@ -228,6 +231,8 @@ int main(int argc, char *argv[]) {
         hash_type = HashType::SHA256;
     } else if (cfg.hash_type == "sha512") {
         hash_type = HashType::SHA512;
+    } else if (cfg.hash_type == "sha3-256") {
+        hash_type = HashType::SHA3_256;
     } else {
         std::println(stderr, "Error: Unknown hash type '{}'", cfg.hash_type);
         return 1;
